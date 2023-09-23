@@ -1,0 +1,45 @@
+import unittest
+from datetime import date
+
+from dateutil.relativedelta import relativedelta
+
+from resources import date_utils as dt
+
+
+class MyTestCase(unittest.TestCase):
+    def test_days_1day_diff(self):
+        d1 = date(2023, 9, 22)
+        d2 = date(2023, 9, 23)
+        self.assertEqual(2, dt.days_between(d2, d1))
+
+    def test_days_1year_diff(self):
+        d1 = date(2012, 2, 29)
+        d2 = date(2013, 3, 1)
+        self.assertEqual(366, dt.days_between(d2, d1))
+
+    def test_days_in_month2(self):
+        self.assertEqual(29, dt.monthrange(2024, 2)[1])
+        self.assertEqual(28, dt.monthrange(2023, 2)[1])
+
+    def test_diff_years_months_days(self):
+        self.assertEqual(relativedelta(years=1), dt.diff_yymmdd('2025-2-28', '2024-2-29'))
+        self.assertEqual(relativedelta(years=3, months=4, days=5),
+                         dt.diff_yymmdd('2026-3-5', '2022-10-31'))
+        self.assertEqual(relativedelta(), dt.diff_yymmdd('2025-2-28', '2025-2-28'))
+        self.assertEqual(relativedelta(months=-2, days=-19), dt.diff_yymmdd('2022-9-15', '2022-12-4'))
+        self.assertEqual(relativedelta(years=10, months=11, days=29),
+                         dt.diff_yymmdd('2023-12-24', '2012-12-25'))
+
+    def test_custom_diff(self):
+        self.assertEqual('0 years, 0 months, 0 days', dt.custom_diff('2012-12-12', '2012-12-12'))
+        self.assertEqual('0 years, 0 months, 1 days', dt.custom_diff('2012-12-12', '2012-12-13'))
+        self.assertEqual('1 years, 0 months, 1 days', dt.custom_diff('2012-12-12', '2013-12-13'))
+        self.assertEqual('0 years, 0 months, 30 days', dt.custom_diff('2012-12-12', '2013-1-11'))
+        self.assertEqual('0 years, 2 months, 30 days', dt.custom_diff('2012-12-12', '2013-3-11'))
+        self.assertEqual('1 years, 0 months, 0 days', dt.custom_diff('2012-2-29', '2013-2-28'))
+        self.assertEqual('2 years, 0 months, 25 days', dt.custom_diff('2012-2-29', '2014-3-25'))
+        self.assertEqual('10 years, 11 months, 29 days', dt.custom_diff('2012-12-25', '2023-12-24'))
+
+
+if __name__ == '__main__':
+    unittest.main()
