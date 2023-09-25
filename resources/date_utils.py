@@ -48,3 +48,10 @@ def custom_diff(date1, date2):
             years -= 1
 
     return '{0} years, {1} months, {2} days'.format(years, months, days)
+
+
+def diff_days(begin_date, days_to_add):
+    beg_dt = datetime.strptime(begin_date, '%Y-%m-%d')
+    end_dt = beg_dt + relativedelta(days=days_to_add)
+    yymmdd = relativedelta(end_dt, beg_dt)
+    return '{0} {1} {2} {3}'.format(end_dt.strftime('%Y-%m-%d'), yymmdd.years, yymmdd.months, yymmdd.days)

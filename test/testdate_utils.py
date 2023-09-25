@@ -8,14 +8,29 @@ from resources import date_utils as dt
 
 class MyTestCase(unittest.TestCase):
     def test_days_1day_diff(self):
-        d1 = date(2023, 9, 22)
-        d2 = date(2023, 9, 23)
-        self.assertEqual(1, dt.days_between(d2, d1))
+        self.assertEqual(1,
+                         dt.days_between(date(2023, 9, 22),
+                                         date(2023, 9, 23)))
+        self.assertEqual(1,
+                         dt.days_between(date(2023, 12, 31),
+                                         date(2024, 1, 1)))
 
     def test_days_1year_diff(self):
-        d1 = date(2012, 2, 29)
-        d2 = date(2013, 3, 1)
-        self.assertEqual(366, dt.days_between(d2, d1))
+        self.assertEqual(366,
+                         dt.days_between(date(2012, 2, 29),
+                                         date(2013, 3, 1)))
+        self.assertEqual(365,
+                         dt.days_between(date(2012, 3, 1),
+                                         date(2013, 3, 1)))
+        self.assertEqual(366,
+                         dt.days_between(date(2012, 2, 28),
+                                         date(2013, 2, 28)))
+        self.assertEqual(366,
+                         dt.days_between(date(2011, 3, 1),
+                                         date(2012, 3, 1)))
+        self.assertEqual(365,
+                         dt.days_between(date(2011, 2, 28),
+                                         date(2012, 2, 28)))
 
     def test_days_in_month2(self):
         self.assertEqual(29, dt.monthrange(2024, 2)[1])
@@ -42,6 +57,13 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual('2 years, 0 months, 25 days', dt.custom_diff('2012-2-29', '2014-3-25'))
         self.assertEqual('10 years, 11 months, 29 days', dt.custom_diff('2012-12-25', '2023-12-24'))
         self.assertEqual('0 years, 11 months, 30 days', dt.custom_diff('2012-1-30', '2013-1-29'))
+
+    def test_diff_days(self):
+        self.assertEqual('2021-01-01 1 0 0', dt.diff_days('2020-1-1', 366))
+        self.assertEqual('2021-02-28 1 0 0', dt.diff_days('2020-2-28', 366))
+        self.assertEqual('2021-02-28 1 0 0', dt.diff_days('2020-2-29', 365))
+        self.assertEqual('2021-03-01 1 0 0', dt.diff_days('2020-3-1', 365))
+        self.assertEqual('2021-03-31 1 1 2', dt.diff_days('2020-2-29', 396))
 
 
 if __name__ == '__main__':
