@@ -5,7 +5,7 @@ from dateutil.relativedelta import relativedelta
 
 
 def days_between(d1, d2):
-    return (d2 - d1).days
+    return abs(d2 - d1).days
 
 
 def days_in_month(year, month):
@@ -38,8 +38,10 @@ def custom_diff(date1, date2):
     elif isleap(first.year) and first.day == 29 and last.month == 2 and last.day == 28:
         days = 0
     else:
-        month= first.month - 1 if last.month == first.month else first.month
-        days = monthrange(first.year, month)[1] - first.day + last.day
+        daycalc_month = first.month
+        if last.month == first.month:
+            daycalc_month = daycalc_month - 1 if last.month > 1 else 12
+        days = monthrange(first.year, daycalc_month)[1] - first.day + last.day
         months -= 1
         if months < 0:
             months = 11
