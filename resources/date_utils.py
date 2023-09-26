@@ -53,5 +53,11 @@ def custom_diff(date1, date2):
 def diff_days(begin_date, days_to_add):
     beg_dt = datetime.strptime(begin_date, '%Y-%m-%d')
     end_dt = beg_dt + relativedelta(days=days_to_add)
-    yymmdd = relativedelta(end_dt, beg_dt)
-    return '{0} {1} {2} {3}'.format(end_dt.strftime('%Y-%m-%d'), yymmdd.years, yymmdd.months, yymmdd.days)
+    diff = relativedelta(end_dt, beg_dt)
+    dates = {'begin': beg_dt.strftime('%Y-%m-%d'), 'end': end_dt.strftime('%Y-%m-%d')}
+    difference = {}
+    if diff.years != 0: difference['year'] = diff.years
+    if diff.months != 0: difference['month'] = diff.months
+    if diff.days != 0: difference['day'] = diff.days
+    if difference: dates['diff'] = difference
+    return dates

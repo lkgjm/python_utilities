@@ -59,11 +59,21 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual('0 years, 11 months, 30 days', dt.custom_diff('2012-1-30', '2013-1-29'))
 
     def test_diff_days(self):
-        self.assertEqual('2021-01-01 1 0 0', dt.diff_days('2020-1-1', 366))
-        self.assertEqual('2021-02-28 1 0 0', dt.diff_days('2020-2-28', 366))
-        self.assertEqual('2021-02-28 1 0 0', dt.diff_days('2020-2-29', 365))
-        self.assertEqual('2021-03-01 1 0 0', dt.diff_days('2020-3-1', 365))
-        self.assertEqual('2021-03-31 1 1 2', dt.diff_days('2020-2-29', 396))
+        self.assertEqual({'begin': '2020-01-01', 'end': '2021-01-01', 'diff': {'year': 1}},
+                         dt.diff_days('2020-1-1', 366))
+        self.assertEqual({'begin': '2020-02-28', 'end': '2021-02-28', 'diff': {'year': 1}},
+                         dt.diff_days('2020-2-28', 366))
+        self.assertEqual({'begin': '2020-02-29', 'end': '2021-02-28', 'diff': {'year': 1}},
+                         dt.diff_days('2020-2-29', 365))
+        self.assertEqual({'begin': '2020-03-01', 'end': '2021-03-01', 'diff': {'year': 1}},
+                         dt.diff_days('2020-3-1', 365))
+        self.assertEqual({'begin': '2020-02-29', 'end': '2021-03-31',
+                          'diff': {'day': 2, 'month': 1, 'year': 1}},
+                         dt.diff_days('2020-2-29', 396))
+        self.assertEqual({'begin': '2024-12-31', 'end': '2024-12-31'},
+                         dt.diff_days('2024-12-31', 0))
+        self.assertEqual({'begin': '2023-01-01', 'end': '2022-12-31', 'diff': {'day': -1}},
+                         dt.diff_days('2023-1-1', -1))
 
 
 if __name__ == '__main__':
