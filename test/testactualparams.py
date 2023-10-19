@@ -1,5 +1,5 @@
 import unittest
-import actualparams
+from resources import actualparams
 
 
 class MyTestCase(unittest.TestCase):
