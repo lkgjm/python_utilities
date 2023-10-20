@@ -1,1 +1,2 @@
-# gj-api
+# python utilities
+Some nice python utilities
