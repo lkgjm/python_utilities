@@ -21,7 +21,7 @@ jobs:
         pip install -r requirements.txt
     - name: set pythonpath
       run: |
-        echo ${{ github.workspace }}
+        echo "PYTHONPATH=${{ github.workspace }}" >> $GITHUB_ENV  
     - name: Analysing the code with pylint
       run: |
         pylint $(git ls-files '*.py')
