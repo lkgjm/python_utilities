@@ -1,3 +1,4 @@
+""" various date utilities"""
 from calendar import monthrange, isleap
 from datetime import datetime
 
@@ -5,19 +6,23 @@ from dateutil.relativedelta import relativedelta
 
 
 def days_between(d1, d2):
+    """ calculate amount of days """
     return abs(d2 - d1).days
 
 
 def days_in_month(year, month):
+    """ calculate days in a month """
     return monthrange(year, month)
 
 
 def diff_yymmdd(date1, date2, dateformat='%Y-%m-%d'):
+    """ year, moth and date difference betwee 2 dates """
     return relativedelta(datetime.strptime(date1, dateformat),
                          datetime.strptime(date2, dateformat))
 
 
 def custom_diff(date1, date2):
+    """ custom defined difference in years, months and dates"""
     dates = [
         datetime.strptime(date1, '%Y-%m-%d'),
         datetime.strptime(date2, '%Y-%m-%d')
@@ -47,17 +52,22 @@ def custom_diff(date1, date2):
             months = 11
             years -= 1
 
-    return '{0} years, {1} months, {2} days'.format(years, months, days)
+    return f'{years} years, {months} months, {days} days'
 
 
 def diff_days(begin_date, days_to_add):
+    """ custom difference in days """
     beg_dt = datetime.strptime(begin_date, '%Y-%m-%d')
     end_dt = beg_dt + relativedelta(days=days_to_add)
     diff = relativedelta(end_dt, beg_dt)
     dates = {'begin': beg_dt.strftime('%Y-%m-%d'), 'end': end_dt.strftime('%Y-%m-%d')}
     difference = {}
-    if diff.years != 0: difference['year'] = diff.years
-    if diff.months != 0: difference['month'] = diff.months
-    if diff.days != 0: difference['day'] = diff.days
-    if difference: dates['diff'] = difference
+    if diff.years != 0:
+        difference['year'] = diff.years
+    if diff.months != 0:
+        difference['month'] = diff.months
+    if diff.days != 0:
+        difference['day'] = diff.days
+    if difference:
+        dates['diff'] = difference
     return dates

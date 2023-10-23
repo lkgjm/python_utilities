@@ -1,14 +1,7 @@
 #!/usr/bin/env python3
+""" parse parameters"""
 
 
 def create_actual_params(params):
+    """ return parameters with forward slashes"""
     return '\\(\\"'+'\\",\\"'.join(map(str, params))+'\\"\\)' if params else '\\(\\)'
-
-
-if __name__ == '__main__':
-    amount = 1234.50
-    ccy = 'EUR'
-    id = 'werk  23 '
-    inputParam = [amount, ccy, '', id]
-    # inputParam = []
-    print(create_actual_params(inputParam))
