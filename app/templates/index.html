@@ -1,11 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Redis Python with Flask</title>
-</head>
-<body>
-<h1>Redis Python/Flask demo</h1>
-<p>Redis database: {{ redis_db }}<br>       counts: {{ redis_count }}</p>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Redis database {% endblock %}</h1>
+{% for message in messages %}
+<div class='message'>
+    <h3>{{ message['title'] }}</h3>
+    <p>{{ message['content'] }}</p>
+</div>
+{% endfor %}
+{% endblock %}
