@@ -4,8 +4,14 @@
 <h1>{% block title %} Redis database {% endblock %}</h1>
 {% for message in messages %}
 <div class='message'>
-    <h3>{{ message['title'] }}</h3>
-    <p>{{ message['content'] }}</p>
+  <tr>
+    <th>Key</th>
+    <th>Value</th>
+  </tr>
+  <tr>
+    <td>{{ message['title'] }}</td>
+    <td>{{ message['content'] }}</td>
+  </tr>
 </div>
 {% endfor %}
 {% endblock %}
