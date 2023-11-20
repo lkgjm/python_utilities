@@ -1,8 +1,10 @@
 {% extends 'index.html' %}
 {% block body %}
-<ul>
+<table style="width:100%">
+<tr><th>Sites</th></tr>
     {% for social in sites %}
-    <li>{{ social }}</li>
+    <tr><td>{{ social }}</td></tr>
     {% endfor %}
-</ul>
+
+</table>
 {% endblock %}
