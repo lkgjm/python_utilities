@@ -20,8 +20,8 @@ def home():
 
 @app.route("/about")
 def about():
-    sites = ['twitter', 'facebook', 'instagram', 'whatsapp']
-    return render_template("about.html", sites=sites)
+    seasons = {"winter": "cold", "spring": "days longer", "summer": "hot", "autumn": "beautiful"}
+    return render_template("about.html", seasons=seasons)
 
 
 @app.route("/contact/<role>")

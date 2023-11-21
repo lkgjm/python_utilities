@@ -1,42 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 <head>
   <meta charset="UTF-8">
-  <title>{% block title %} {% endblock %} - RedisStore</title>
-  <style>
-    .message, th, td {
-    border-collapse: collapse;
-    border: 1px solid black;
-    padding: 10px;
-    margin: 20px;
-    background-color: #f3f3f3
-    }
-    nav a {
-    color: 0066cc;
-    font-size: 1.5em;
-    margin-left: 50px;
-    text-decoration: none;
-    }
-    .alert {
-    padding: 20px;
-    margin: 5px;
-    color: #970020;
-    background-color: #ffd5de;
-    }
-  </style>
+  <title>{% block title %} {% endblock %} - RedisStore</title
 </head>
 <body>
-<nav>
-  <a href="{{ url_for('index') }}">RedisStore</a>
-  <a href="{{ url_for('create') }}">Create</a>
-  <a href="#">About</a>
-</nav>
-<hr>
-<div class="content">
-  {% for message in get_flashed_messages() %}
-  <div class="alert">{{ message }}</div>
-  {% endfor %}
-  {% block content %} {% endblock %}
-</div>
+  <nav>
+    <a href="{{ url_for('index') }}">RedisStore</a>
+    <a href="{{ url_for('create') }}">Create</a>
+    <a href="#">About</a>
+  </nav>
+
+  <div class="content">
+    {% for message in get_flashed_messages() %}
+      <div class="alert">{{ message }}</div>
+    {% endfor %}
+
+    {% block content %}
+
+    {% endblock %}
+  </div>
 </body>
 </html>
