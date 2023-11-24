@@ -6,6 +6,7 @@ ENV BIND_PORT 5000
 COPY ./requirements.txt /requirements.txt
 COPY ./app.py /app.py
 COPY ./templates /templates
+COPY ./static static
 
 RUN pip install -r /requirements.txt
 
