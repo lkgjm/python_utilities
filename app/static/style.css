@@ -1,0 +1,49 @@
+.message {
+  border-collapse: collapse;
+  border: 1px solid black;
+  padding: 10px;
+  margin: 20px;
+  background-color: #f3f3f3
+}
+nav a {
+  color: #0066cc;
+  background-color: #f3f3f3;
+  font-size: 1.5em;
+  margin: 50px;
+  text-decoration: none;
+}
+
+.alert {
+  padding: 20px;
+  margin: 5px;
+  color: #970020;
+  background-color: #ffd5de;
+}
+
+body {
+	text-align: left;
+	border-collapse: collapse;
+	margin 50px;
+}
+
+.centered {
+	margin: 100px;
+	width: 20%;
+}
+
+.thick-border {
+	border: 3px solid black;
+	border-collapse: collapse;
+}
+
+table, th, td {
+    text-align: left;
+	border: 1px solid black;
+	border-collapse: collapse;
+	padding-top 10px;
+	padding-bottom 10px;
+	padding-left: 15px;
+	padding-right: 15px;
+	margin 100px
+}
+tr:hover {background-color: coral;}

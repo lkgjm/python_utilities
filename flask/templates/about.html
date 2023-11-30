@@ -1,10 +1,15 @@
 {% extends 'index.html' %}
 {% block body %}
-<table style="width:100%">
-<tr><th>Sites</th></tr>
-    {% for social in sites %}
-    <tr><td>{{ social }}</td></tr>
+<table class="centered thick-border">
+    <tr>
+        <th>Season</th>
+        <th>Character</th>
+    </tr>
+    {% for key, value in seasons.items() %}
+        <tr>
+            <td>{{ key }}</td>
+            <td>{{ value }}</td>
+        </tr>
     {% endfor %}
-
 </table>
 {% endblock %}

@@ -1,17 +1,22 @@
 {% extends 'base.html' %}
 
+<h1>
+  {% block title %}
+    Redis database
+  {% endblock %}
+</h1>
+
 {% block content %}
-<h1>{% block title %} Redis database {% endblock %}</h1>
-{% for message in messages %}
-<div class='message'>
-  <tr>
-    <th>Key</th>
-    <th>Value</th>
-  </tr>
-  <tr>
-    <td>{{ message['title'] }}</td>
-    <td>{{ message['content'] }}</td>
-  </tr>
-</div>
-{% endfor %}
+  <table class="thick-border">
+    <tr>
+      <th>Key</th>
+      <th>Value</th>
+    </tr>
+    {% for message in messages %}
+        <tr>
+          <td>{{ message['title'] }}</td>
+          <td>{{ message['content'] }}</td>
+        </tr>
+    {% endfor %}
+  </table>
 {% endblock %}
