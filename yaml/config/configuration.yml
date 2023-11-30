@@ -1,0 +1,51 @@
+---
+deploy:
+  dt01:
+    stage: 'DeployDT01'
+    environment: 'dev'
+    subEnvironment: 'dev-dt01'
+    datacenter: 'WPR'
+    mtmPortNumber: 39801
+  dt02:
+    stage: 'DeployDT02'
+    environment: 'dev'
+    subEnvironment: 'dev-dt02'
+    datacenter: 'WPR'
+    mtmPortNumber: 39802
+---
+namespace:
+  wpr:
+    dev:
+      ams-nl-api: 'P02885-amsapi-dev.api.cluster0017.non-prod.ichp.ing.net'
+      profile-addon-api: 'P02885-paapi-dev.api.cluster0017.non-prod.ichp.ing.net'
+      legacy-gateway-in: 'P02885-legi-dev.api.cluster0017.non-prod.ichp.ing.net'
+      message-bridge: 'P02885-lego-dev.api.cluster0017.non-prod.ichp.ing.net'
+    regression:
+      ams-nl-api: 'P02885-amsapireg-tst.api.cluster0017.non-prod.ichp.ing.net'
+      profile-addon-api: 'P02885-paapi-reg-tst.api.cluster0017.non-prod.ichp.ing.net'
+      legacy-gateway-in: 'P02885-legi-reg-tst.api.cluster0017.non-prod.ichp.ing.net'
+      message-bridge: 'P02885-lego-reg-tst.api.cluster0017.non-prod.ichp.ing.net'
+  dcr:
+    dev:
+      ams-nl-api: 'P02885-amsapi-dev.api.cluster0016.non-prod.ichp.ing.net'
+      profile-addon-api: 'P02885-paapi-dev.api.cluster0016.non-prod.ichp.ing.net'
+      legacy-gateway-in: 'P02885-legi-dev.api.cluster0016.non-prod.ichp.ing.net'
+      message-bridge: 'P02885-lego-dev.api.cluster0016.non-prod.ichp.ing.net'
+    regression:
+      ams-nl-api: 'P02885-amsapireg-tst.api.cluster0016.non-prod.ichp.ing.net'
+      profile-addon-api: 'P02885-paapi-reg-tst.api.cluster0016.non-prod.ichp.ing.net'
+      legacy-gateway-in: 'P02885-legi-reg-tst.api.cluster0016.non-prod.ichp.ing.net'
+      message-bridge: 'P02885-lego-reg-tst.api.cluster0016.non-prod.ichp.ing.net'
+---
+ichpnamespace:
+  dev:
+    ams-nl-api: 'amsapi-dev'
+    profile-addon-api: 'paapi-dev'
+    legacy-gateway-in: 'legi-dev'
+    message-bridge: 'lego-dev'
+  regression:
+    ams-nl-api: 'amsapireg-tst'
+    profile-addon-api: 'paapi-reg-tst'
+    legacy-gateway-in: 'legi-reg-tst'
+    message-bridge: 'lego-reg-tst'
+...
