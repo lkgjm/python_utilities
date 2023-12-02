@@ -1,4 +1,13 @@
----
+deployments:
+    - 'dt01'
+    - 'dt02'
+    
+applications:
+    - 'api-001'
+    - 'api-002'
+    - 'api-003'
+    - 'api-004'
+
 deploy:
   dt01:
     stage: 'DeployStage01'
@@ -12,7 +21,7 @@ deploy:
     subEnvironment: 'develop-02'
     datacenter: 'datacenter2'
     portNumber: 12334
----
+
 namespace:
   datacenter1:
     dev:
@@ -36,7 +45,7 @@ namespace:
       api-002: 'cluster2.api2-test.net'
       api-003: 'cluster2.api3-test.net'
       api-004: 'cluster2.api4-test.net'
----
+
 podnamespace:
   dev:
     api-001: 'api1-dev'
@@ -48,4 +57,3 @@ podnamespace:
     api-002: 'api2-tst'
     api-003: 'api3-tst'
     api-004: 'api4-tst'
-...
